@@ -12,6 +12,7 @@ interface Position {
   x: number;
   y: number;
   angle: number;
+  zOffset?: number;
 }
 
 interface CircularAvatarProps {
@@ -42,11 +43,13 @@ export const CircularAvatar = ({ collaborator, rank, mainSkill, position }: Circ
     <div
       className={`circular-avatar-container ${getRankStyle()}`}
       style={{
-        transform: `translate(calc(-50% + ${position.x}px), calc(-50% + ${position.y}px))`,
+        transform: `translate(calc(-50% + ${position.x}px), calc(-50% + ${position.y}px)) translateZ(${position.zOffset || 0}px)`,
         position: 'absolute',
         top: '50%',
         left: '50%',
-      }}
+        '--x': `${position.x}px`,
+        '--y': `${position.y}px`,
+      } as React.CSSProperties}
     >
       {/* Holographic Panel */}
       <div className="holo-panel">

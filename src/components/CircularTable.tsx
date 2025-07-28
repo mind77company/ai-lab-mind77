@@ -23,10 +23,22 @@ export const CircularTable = ({ collaborators }: CircularTableProps) => {
   
   const getCircularPosition = (index: number, total: number) => {
     const angle = (360 / total) * index;
-    const radius = 280; // Distance from center
+    
+    // Different positioning for rank hierarchy
+    let radius = 350; // Default distance from center
+    let zOffset = 0;
+    
+    if (index === 0) { // Rank #1 - Supreme position (elevated and centered front)
+      radius = 320;
+      zOffset = 20;
+    } else if (index <= 2) { // Rank #2 & #3 - Distinguished lateral positions
+      radius = 340;
+      zOffset = 10;
+    }
+    
     const x = Math.cos((angle - 90) * (Math.PI / 180)) * radius;
     const y = Math.sin((angle - 90) * (Math.PI / 180)) * radius;
-    return { x, y, angle };
+    return { x, y, angle, zOffset };
   };
 
   return (

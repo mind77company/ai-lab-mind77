@@ -209,405 +209,518 @@ All colors MUST be HSL for proper theming.
     }
   }
 
-  /* Circular Table Styles */
+  /* Olympic Technological Table - Immersive 3D Environment */
   .circular-table-base {
     position: absolute;
-    width: 400px;
-    height: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) perspective(1500px) rotateX(20deg);
+    width: 800px;
+    height: 800px;
+    background: 
+      radial-gradient(ellipse 60% 40% at center 30%, hsl(var(--primary) / 0.3), transparent),
+      radial-gradient(ellipse 80% 60% at center, hsl(var(--primary) / 0.15), transparent 70%);
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
     transform-style: preserve-3d;
-    animation: table-rotate 60s linear infinite;
   }
 
   .circular-table-surface {
+    position: relative;
     width: 100%;
     height: 100%;
     border-radius: 50%;
     background: 
-      conic-gradient(from 0deg, 
-        rgba(0, 255, 255, 0.2) 0deg,
-        transparent 45deg,
-        rgba(0, 255, 255, 0.1) 90deg,
-        transparent 135deg,
-        rgba(0, 255, 255, 0.2) 180deg,
-        transparent 225deg,
-        rgba(0, 255, 255, 0.1) 270deg,
-        transparent 315deg
+      linear-gradient(135deg, 
+        hsl(var(--background) / 0.1), 
+        hsl(var(--primary) / 0.05),
+        hsl(var(--background) / 0.1)
       );
-    border: 2px solid rgba(0, 255, 255, 0.3);
-    position: relative;
+    border: 3px solid hsl(var(--primary) / 0.4);
     box-shadow: 
-      0 0 50px rgba(0, 255, 255, 0.3),
-      inset 0 0 30px rgba(0, 255, 255, 0.1);
+      inset 0 0 100px hsl(var(--primary) / 0.3),
+      inset 0 0 200px hsl(var(--primary) / 0.1),
+      0 20px 60px hsl(var(--primary) / 0.2),
+      0 0 150px hsl(var(--primary) / 0.15);
+    transform: translateZ(20px);
   }
 
   .table-center-orb {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 60px;
-    height: 60px;
     transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    background: 
+      radial-gradient(circle at 30% 30%, hsl(var(--primary)), hsl(var(--primary) / 0.7)),
+      radial-gradient(circle at 70% 70%, hsl(var(--secondary) / 0.8), transparent);
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 255, 255, 0.8) 0%, rgba(0, 255, 255, 0.2) 100%);
+    border: 2px solid hsl(var(--primary));
     box-shadow: 
-      0 0 30px rgba(0, 255, 255, 0.8),
-      inset 0 0 20px rgba(255, 255, 255, 0.3);
-    animation: orb-pulse 2s ease-in-out infinite;
+      0 0 60px hsl(var(--primary)),
+      inset 0 0 40px hsl(var(--primary) / 0.3),
+      inset 0 0 80px hsl(var(--background) / 0.1);
+    animation: hologram-pulse 4s ease-in-out infinite;
+    transform: translateZ(30px);
   }
 
   .neural-circuits {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 40px;
-    height: 40px;
-    transform: translate(-50%, -50%);
+    inset: 30px;
+    border-radius: 50%;
     background: 
-      linear-gradient(45deg, transparent 30%, rgba(0, 255, 255, 0.6) 50%, transparent 70%),
-      linear-gradient(-45deg, transparent 30%, rgba(0, 255, 255, 0.6) 50%, transparent 70%);
-    animation: circuit-pulse 1.5s ease-in-out infinite alternate;
+      conic-gradient(from 0deg, 
+        hsl(var(--primary) / 0.1) 0deg,
+        transparent 45deg,
+        hsl(var(--primary) / 0.15) 90deg,
+        transparent 135deg,
+        hsl(var(--primary) / 0.1) 180deg,
+        transparent 225deg,
+        hsl(var(--primary) / 0.15) 270deg,
+        transparent 315deg,
+        hsl(var(--primary) / 0.1) 360deg
+      ),
+      radial-gradient(circle at center, transparent 40%, hsl(var(--primary) / 0.05) 60%);
+    animation: circuit-matrix 8s linear infinite;
   }
 
   .energy-core {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 20px;
-    height: 20px;
     transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: 
+      radial-gradient(circle, hsl(var(--primary)), hsl(var(--primary) / 0.5), transparent);
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 1);
-    animation: core-flicker 0.5s ease-in-out infinite alternate;
+    box-shadow: 
+      0 0 40px hsl(var(--primary)),
+      inset 0 0 20px hsl(var(--background) / 0.2);
+    animation: core-energy 3s ease-in-out infinite;
   }
 
   .table-grid-pattern {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300px;
-    height: 300px;
-    transform: translate(-50%, -50%);
+    inset: 0;
     border-radius: 50%;
     background: 
-      repeating-conic-gradient(
-        from 0deg,
-        transparent 0deg,
-        rgba(0, 255, 255, 0.1) 2deg,
-        transparent 4deg
+      repeating-conic-gradient(from 0deg, 
+        transparent 0deg 7deg,
+        hsl(var(--primary) / 0.1) 8deg 9deg,
+        transparent 10deg 17deg
+      ),
+      repeating-radial-gradient(circle, 
+        transparent 0px 40px,
+        hsl(var(--primary) / 0.05) 41px 42px,
+        transparent 43px 80px
       );
-    animation: grid-spin 120s linear infinite;
-  }
-
-  .energy-ring-outer, .energy-ring-inner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    border-radius: 50%;
-    border: 1px solid rgba(0, 255, 255, 0.4);
-    background: transparent;
   }
 
   .energy-ring-outer {
-    width: 350px;
-    height: 350px;
-    transform: translate(-50%, -50%);
-    animation: ring-rotate 30s linear infinite;
+    position: absolute;
+    inset: -20px;
+    border: 3px solid transparent;
+    border-radius: 50%;
+    border-top: 3px solid hsl(var(--primary) / 0.8);
+    border-right: 3px solid hsl(var(--primary) / 0.4);
+    animation: olympus-rotation 12s linear infinite;
+    transform: translateZ(40px);
   }
 
   .energy-ring-inner {
-    width: 250px;
-    height: 250px;
-    transform: translate(-50%, -50%);
-    animation: ring-rotate 20s linear infinite reverse;
+    position: absolute;
+    inset: 60px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    border-bottom: 2px solid hsl(var(--primary) / 0.6);
+    border-left: 2px solid hsl(var(--primary) / 0.3);
+    animation: olympus-rotation-reverse 8s linear infinite;
+    transform: translateZ(25px);
   }
 
   .neural-connections {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 600px;
-    height: 600px;
     transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
   }
 
   .neural-beam {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 2px;
-    height: 280px;
-    background: linear-gradient(to top, transparent, rgba(0, 255, 255, 0.6), transparent);
-    transform-origin: bottom center;
-    animation: beam-pulse 3s ease-in-out infinite;
+    width: 400px;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      hsl(var(--primary)),
+      hsl(var(--primary) / 0.6) 30%,
+      hsl(var(--primary) / 0.2) 70%,
+      transparent
+    );
+    transform-origin: left center;
+    animation: neural-data-flow 4s ease-in-out infinite;
+    box-shadow: 0 0 10px hsl(var(--primary) / 0.5);
   }
 
-  /* Circular Avatar Styles */
+  /* Olympus Avatar Hierarchy */
   .circular-avatar-container {
-    z-index: 10;
-    transition: all 0.3s ease;
+    position: absolute;
+    width: 220px;
+    height: 280px;
+    transform-style: preserve-3d;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .circular-avatar-container:hover {
-    transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1.1) !important;
-    z-index: 20;
+    transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1.08) translateZ(20px);
+  }
+
+  /* Rank #1 - Supreme Position */
+  .rank-gold .circular-avatar-container {
+    width: 260px;
+    height: 320px;
+    z-index: 100;
+  }
+
+  .rank-gold .holo-panel {
+    background: linear-gradient(
+      145deg,
+      rgba(255, 215, 0, 0.15),
+      hsl(var(--background) / 0.95),
+      rgba(255, 215, 0, 0.1)
+    );
+    border: 2px solid rgba(255, 215, 0, 0.6);
+    transform: perspective(1200px) rotateX(8deg) translateZ(30px);
+    box-shadow: 
+      0 20px 60px rgba(255, 215, 0, 0.3),
+      inset 0 2px 0 rgba(255, 215, 0, 0.2),
+      0 0 80px rgba(255, 215, 0, 0.2);
+  }
+
+  /* Rank #2 & #3 - Distinguished Positions */
+  .rank-silver .holo-panel,
+  .rank-bronze .holo-panel {
+    transform: perspective(1200px) rotateX(6deg) translateZ(20px);
+  }
+
+  .rank-silver .holo-panel {
+    border: 2px solid rgba(192, 192, 192, 0.5);
+    box-shadow: 
+      0 15px 45px rgba(192, 192, 192, 0.25),
+      inset 0 1px 0 rgba(192, 192, 192, 0.15);
+  }
+
+  .rank-bronze .holo-panel {
+    border: 2px solid rgba(205, 127, 50, 0.5);
+    box-shadow: 
+      0 15px 45px rgba(205, 127, 50, 0.25),
+      inset 0 1px 0 rgba(205, 127, 50, 0.15);
   }
 
   .holo-panel {
-    background: 
-      linear-gradient(145deg, rgba(0, 255, 255, 0.1), rgba(0, 0, 0, 0.8)),
-      linear-gradient(45deg, transparent 30%, rgba(0, 255, 255, 0.05) 50%, transparent 70%);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 255, 255, 0.3);
-    border-radius: 12px;
-    padding: 16px;
-    width: 140px;
-    text-align: center;
     position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      145deg,
+      hsl(var(--background) / 0.95),
+      hsl(var(--background) / 0.85),
+      hsl(var(--background) / 0.9)
+    );
+    border: 1px solid hsl(var(--primary) / 0.4);
+    border-radius: 16px;
+    padding: 20px;
+    backdrop-filter: blur(15px) saturate(150%);
     box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.5),
-      0 0 20px rgba(0, 255, 255, 0.2),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
+      0 12px 40px hsl(var(--primary) / 0.2),
+      inset 0 1px 0 hsl(var(--primary) / 0.1),
+      inset 0 -1px 0 hsl(var(--background) / 0.1);
+    transform: perspective(1200px) rotateX(5deg) translateZ(15px);
+    overflow: hidden;
   }
 
-  .holo-panel:hover {
-    border-color: rgba(0, 255, 255, 0.6);
-    box-shadow: 
-      0 12px 40px rgba(0, 0, 0, 0.6),
-      0 0 30px rgba(0, 255, 255, 0.4),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  .holo-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--primary) / 0.1),
+      transparent
+    );
+    animation: holographic-scan 6s ease-in-out infinite;
   }
 
   .rank-indicator {
     position: absolute;
-    top: -8px;
-    right: -8px;
-    width: 32px;
-    height: 32px;
+    top: -12px;
+    right: -12px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid currentColor;
+    background: radial-gradient(circle, hsl(var(--primary)), hsl(var(--primary) / 0.8));
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
-    box-shadow: 0 0 15px currentColor;
+    box-shadow: 
+      0 0 20px hsl(var(--primary)),
+      inset 0 2px 0 hsl(var(--primary) / 0.3);
+    border: 2px solid hsl(var(--background));
+    transform: translateZ(10px);
   }
 
   .avatar-container {
     position: relative;
-    margin: 8px auto 12px;
-    width: fit-content;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
   }
 
   .avatar-glow {
-    padding: 4px;
+    position: relative;
+    padding: 6px;
     border-radius: 50%;
-    background: 
-      conic-gradient(from 0deg, 
-        rgba(0, 255, 255, 0.6),
-        transparent,
-        rgba(0, 255, 255, 0.6)
-      );
-    animation: avatar-glow-rotate 4s linear infinite;
+    background: conic-gradient(
+      from 0deg,
+      hsl(var(--primary)),
+      hsl(var(--secondary)),
+      hsl(var(--primary))
+    );
+    animation: avatar-energy-flow 4s linear infinite;
   }
 
-  .top-three-glow {
-    background: 
-      conic-gradient(from 0deg, 
-        rgba(255, 215, 0, 0.8),
-        rgba(0, 255, 255, 0.6),
-        rgba(255, 215, 0, 0.8)
-      );
+  .avatar-glow.top-three-glow {
+    padding: 8px;
+    box-shadow: 
+      0 0 30px hsl(var(--primary)),
+      inset 0 0 20px hsl(var(--primary) / 0.2);
   }
 
   .neural-avatar {
-    background: rgba(0, 0, 0, 0.8) !important;
+    border: 3px solid hsl(var(--background));
+    box-shadow: 
+      0 0 20px hsl(var(--primary) / 0.3),
+      inset 0 0 10px hsl(var(--background) / 0.2);
   }
 
   .energy-pulse-ring {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100px;
-    height: 100px;
-    transform: translate(-50%, -50%);
-    border: 2px solid rgba(0, 255, 255, 0.3);
+    inset: -12px;
+    border: 2px solid hsl(var(--primary) / 0.4);
     border-radius: 50%;
-    animation: pulse-ring 2s ease-in-out infinite;
+    animation: olympus-pulse-ring 3s ease-in-out infinite;
   }
 
   .collaborator-name {
-    color: white;
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 4px;
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: hsl(var(--foreground));
+    margin-bottom: 6px;
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.3);
   }
 
   .main-skill {
-    color: rgba(0, 255, 255, 0.8);
-    font-size: 11px;
-    margin-bottom: 8px;
-    text-transform: uppercase;
+    text-align: center;
+    font-size: 13px;
+    color: hsl(var(--primary));
+    margin-bottom: 12px;
+    font-weight: 500;
     letter-spacing: 0.5px;
   }
 
   .level-display {
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 4px;
-    margin-bottom: 8px;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 12px;
   }
 
   .level-label {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 10px;
-    font-weight: 500;
+    font-size: 11px;
+    color: hsl(var(--muted-foreground));
+    font-weight: 600;
   }
 
   .level-number {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
-    text-shadow: 0 0 10px currentColor;
+    text-shadow: 0 0 8px currentColor;
   }
 
   .status-indicators {
     display: flex;
     justify-content: center;
-    gap: 4px;
+    gap: 6px;
   }
 
   .status-dot {
-    width: 6px;
-    height: 6px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
+    background: hsl(var(--muted));
+    opacity: 0.4;
     transition: all 0.3s ease;
   }
 
   .status-dot.active {
-    background: rgba(0, 255, 255, 0.8);
-    box-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
+    background: hsl(var(--primary));
+    opacity: 1;
+    box-shadow: 0 0 10px hsl(var(--primary));
+    animation: status-pulse 2s ease-in-out infinite;
   }
 
   .connection-node {
     position: absolute;
-    bottom: -4px;
+    bottom: -30px;
     left: 50%;
-    width: 8px;
-    height: 8px;
     transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle, hsl(var(--primary)), hsl(var(--primary) / 0.6));
     border-radius: 50%;
-    background: rgba(0, 255, 255, 0.8);
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
-    animation: node-pulse 2s ease-in-out infinite;
+    box-shadow: 
+      0 0 15px hsl(var(--primary)),
+      0 0 30px hsl(var(--primary) / 0.5);
+    animation: connection-pulse 3s ease-in-out infinite;
   }
 
+  /* Digital Mist and Particles */
   .energy-particles {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     pointer-events: none;
+    overflow: hidden;
   }
 
   .energy-particle {
     position: absolute;
     width: 3px;
     height: 3px;
+    background: hsl(var(--primary));
     border-radius: 50%;
-    background: rgba(0, 255, 255, 0.6);
-    animation: particle-float 6s ease-in-out infinite;
+    box-shadow: 0 0 6px hsl(var(--primary));
+    animation: olympus-particle-drift 8s linear infinite;
   }
 
-  /* Rank-specific styles */
-  .rank-gold .holo-panel {
-    border-color: rgba(255, 215, 0, 0.5);
-    box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.5),
-      0 0 30px rgba(255, 215, 0, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  /* Advanced Olympus Animations */
+  @keyframes hologram-pulse {
+    0%, 100% { 
+      transform: translate(-50%, -50%) scale(1) translateZ(30px);
+      opacity: 1;
+    }
+    50% { 
+      transform: translate(-50%, -50%) scale(1.05) translateZ(35px);
+      opacity: 0.9;
+    }
   }
 
-  .rank-silver .holo-panel {
-    border-color: rgba(192, 192, 192, 0.5);
-    box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.5),
-      0 0 25px rgba(192, 192, 192, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  @keyframes circuit-matrix {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
 
-  .rank-bronze .holo-panel {
-    border-color: rgba(205, 127, 50, 0.5);
-    box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.5),
-      0 0 25px rgba(205, 127, 50, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  @keyframes core-energy {
+    0%, 100% { 
+      transform: translate(-50%, -50%) scale(1);
+      box-shadow: 0 0 40px hsl(var(--primary)), inset 0 0 20px hsl(var(--background) / 0.2);
+    }
+    50% { 
+      transform: translate(-50%, -50%) scale(1.1);
+      box-shadow: 0 0 60px hsl(var(--primary)), inset 0 0 30px hsl(var(--background) / 0.3);
+    }
   }
 
-  /* Animations */
-  @keyframes table-rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+  @keyframes olympus-rotation {
+    0% { transform: rotate(0deg) translateZ(40px); }
+    100% { transform: rotate(360deg) translateZ(40px); }
   }
 
-  @keyframes orb-pulse {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
-    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+  @keyframes olympus-rotation-reverse {
+    0% { transform: rotate(360deg) translateZ(25px); }
+    100% { transform: rotate(0deg) translateZ(25px); }
   }
 
-  @keyframes circuit-pulse {
-    0% { opacity: 0.6; }
-    100% { opacity: 1; }
+  @keyframes neural-data-flow {
+    0%, 100% { 
+      opacity: 0.4;
+      transform: scaleX(1);
+    }
+    50% { 
+      opacity: 1;
+      transform: scaleX(1.1);
+    }
   }
 
-  @keyframes core-flicker {
-    0% { opacity: 0.8; }
-    100% { opacity: 1; }
+  @keyframes holographic-scan {
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: 100%; }
   }
 
-  @keyframes grid-spin {
-    from { transform: translate(-50%, -50%) rotate(0deg); }
-    to { transform: translate(-50%, -50%) rotate(360deg); }
+  @keyframes avatar-energy-flow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
 
-  @keyframes ring-rotate {
-    from { transform: translate(-50%, -50%) rotate(0deg); }
-    to { transform: translate(-50%, -50%) rotate(360deg); }
+  @keyframes olympus-pulse-ring {
+    0% { 
+      transform: scale(1); 
+      opacity: 0.6; 
+    }
+    50% { 
+      transform: scale(1.2); 
+      opacity: 0.3; 
+    }
+    100% { 
+      transform: scale(1.4); 
+      opacity: 0; 
+    }
   }
 
-  @keyframes beam-pulse {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.8; }
+  @keyframes status-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
   }
 
-  @keyframes avatar-glow-rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+  @keyframes connection-pulse {
+    0%, 100% { 
+      transform: translateX(-50%) scale(1);
+      opacity: 1;
+    }
+    50% { 
+      transform: translateX(-50%) scale(1.3);
+      opacity: 0.7;
+    }
   }
 
-  @keyframes pulse-ring {
-    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
-    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.1; }
-    100% { transform: translate(-50%, -50%) scale(1.4); opacity: 0; }
-  }
-
-  @keyframes node-pulse {
-    0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.8; }
-    50% { transform: translateX(-50%) scale(1.2); opacity: 1; }
-  }
-
-  @keyframes particle-float {
-    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+  @keyframes olympus-particle-drift {
+    0% { 
+      transform: translateY(100vh) translateX(0px) scale(0);
+      opacity: 0;
+    }
+    10% { 
+      opacity: 1;
+      transform: scale(1);
+    }
+    90% { 
+      opacity: 1;
+    }
+    100% { 
+      transform: translateY(-100px) translateX(50px) scale(0);
+      opacity: 0;
+    }
   }
 }
