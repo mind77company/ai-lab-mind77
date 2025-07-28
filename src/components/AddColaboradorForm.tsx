@@ -5,12 +5,14 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useColaboradores, type Colaborador } from '@/hooks/useColaboradores';
+import { useToast } from '@/hooks/use-toast';
 import { Plus } from 'lucide-react';
 
 export const AddColaboradorForm = () => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const { addColaborador } = useColaboradores();
+  const { toast } = useToast();
 
   const [formData, setFormData] = useState<{
     name: string;
@@ -50,11 +52,24 @@ export const AddColaboradorForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
+    
+    if (!formData.name || !formData.codename) {
+      toast({
+        title: "Erro",
+        description: "Nome e codename são obrigatórios",
+        variant: "destructive",
+      });
+      return;
+    }
 
+    setLoading(true);
     try {
       await addColaborador(formData);
-      
+      toast({
+        title: "Sucesso",
+        description: "Colaborador adicionado com sucesso!",
+      });
+      setOpen(false);
       // Reset form
       setFormData({
         name: '',
@@ -74,10 +89,12 @@ export const AddColaboradorForm = () => {
         evolution_details: [],
         is_weekly_growth_leader: false
       });
-      
-      setOpen(false);
     } catch (error) {
-      console.error('Error adding colaborador:', error);
+      toast({
+        title: "Erro",
+        description: "Erro ao adicionar colaborador. Verifique se você está autenticado.",
+        variant: "destructive",
+      });
     } finally {
       setLoading(false);
     }

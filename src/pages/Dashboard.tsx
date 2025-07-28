@@ -4,6 +4,7 @@ import { TopBar } from "@/components/TopBar";
 import { RankingGrid } from "@/components/RankingGrid";
 import { SidebarNav } from "@/components/SidebarNav";
 import { FilterDropdowns } from "@/components/FilterDropdowns";
+import { useAuth } from "@/hooks/useAuth";
 
 const Dashboard = () => {
   const [selectedPeriod, setSelectedPeriod] = useState("Semana");

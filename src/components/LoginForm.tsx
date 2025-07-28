@@ -1,17 +1,58 @@
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
+import { useAuth } from "@/hooks/useAuth";
+import { useToast } from "@/hooks/use-toast";
 
 export const LoginForm = () => {
-  const [mindAccess, setMindAccess] = useState("");
-  const [neuralKey, setNeuralKey] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isSignUp, setIsSignUp] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const { signIn, signUp } = useAuth();
+  const { toast } = useToast();
+  const navigate = useNavigate();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Neural access attempted:", { mindAccess, neuralKey });
+    if (!email || !password) {
+      toast({
+        title: "Erro",
+        description: "Por favor, preencha todos os campos.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const { error } = isSignUp 
+        ? await signUp(email, password)
+        : await signIn(email, password);
+
+      if (error) {
+        toast({
+          title: "Erro de autenticação",
+          description: error.message,
+          variant: "destructive",
+        });
+      } else {
+        if (isSignUp) {
+          toast({
+            title: "Conta criada",
+            description: "Verifique seu email para confirmar a conta.",
+          });
+        } else {
+          navigate("/dashboard");
+        }
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -30,32 +71,32 @@ export const LoginForm = () => {
         </CardHeader>
         
         <CardContent className="space-y-6 relative">
-          <form onSubmit={handleLogin} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-3">
-              <Label htmlFor="mindAccess" className="text-metallic font-medium tracking-wide">
-                Mind Access
+              <Label htmlFor="email" className="text-metallic font-medium tracking-wide">
+                Email Neural
               </Label>
               <Input
-                id="mindAccess"
-                type="text"
-                value={mindAccess}
-                onChange={(e) => setMindAccess(e.target.value)}
-                placeholder="Enter neural identifier..."
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="seu@email.com"
                 className="neural-input"
                 required
               />
             </div>
             
             <div className="space-y-3">
-              <Label htmlFor="neuralKey" className="text-metallic font-medium tracking-wide">
-                Neural Key
+              <Label htmlFor="password" className="text-metallic font-medium tracking-wide">
+                Chave Neural
               </Label>
               <Input
-                id="neuralKey"
+                id="password"
                 type="password"
-                value={neuralKey}
-                onChange={(e) => setNeuralKey(e.target.value)}
-                placeholder="Enter authentication key..."
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Digite sua senha..."
                 className="neural-input"
                 required
               />
@@ -65,8 +106,20 @@ export const LoginForm = () => {
               type="submit"
               variant="neural"
               className="w-full h-14 text-lg font-semibold neural-button"
+              disabled={loading}
             >
-              <span className="relative z-10">Initialize Neural Link</span>
+              <span className="relative z-10">
+                {loading ? "Processando..." : isSignUp ? "Criar Conta Neural" : "Inicializar Link Neural"}
+              </span>
+            </Button>
+
+            <Button
+              type="button"
+              variant="ghost"
+              className="w-full text-metallic hover:text-cyan"
+              onClick={() => setIsSignUp(!isSignUp)}
+            >
+              {isSignUp ? "Já tem uma conta? Fazer login" : "Não tem conta? Criar nova"}
             </Button>
           </form>
         </CardContent>
