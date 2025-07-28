@@ -175,11 +175,53 @@ All colors MUST be HSL for proper theming.
     @apply from-energy to-neural;
     box-shadow: 0 0 30px hsl(190 100% 44% / 0.6);
   }
+
+  /* Supreme Hall Podium Styling */
+  .podium-first {
+    @apply animate-pulse-glow;
+    animation-duration: 2s;
+  }
+  
+  .podium-second, .podium-third {
+    @apply hover:animate-pulse-glow;
+  }
+  
+  .ranking-extended {
+    @apply hover:bg-black/80 hover:border-neural/60;
+    transition: all 0.3s ease-in-out;
+  }
   
   /* Responsive text scaling */
   @media (max-width: 768px) {
     .neural-input {
       @apply h-11 text-sm px-3;
     }
+    
+    .podium-first {
+      transform: none !important;
+    }
+  }
+}
+
+@layer utilities {
+  /* Supreme Hall specific animations */
+  @keyframes float-glow {
+    0%, 100% {
+      transform: translateY(0px);
+      box-shadow: 0 0 20px hsl(190 100% 44% / 0.3);
+    }
+    50% {
+      transform: translateY(-10px);
+      box-shadow: 0 0 30px hsl(190 100% 44% / 0.6);
+    }
+  }
+  
+  .animate-float-glow {
+    animation: float-glow 3s ease-in-out infinite;
+  }
+  
+  /* Background positioning helpers */
+  .bg-podium-position {
+    background-position: center bottom;
   }
 }
