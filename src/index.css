@@ -123,11 +123,52 @@ All colors MUST be HSL for proper theming.
     @apply bg-background text-foreground;
   }
   
-  /* Custom glow effects for neural interface */
-  .glow-focus:focus {
-    box-shadow: 0 0 20px hsl(190 100% 44% / 0.4);
+  /* Enhanced neural styling classes */
+  .glass-morph {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(12, 192, 223, 0.3);
   }
-  
+
+  .neural-glow {
+    box-shadow: 
+      0 0 20px rgba(12, 192, 223, 0.2),
+      inset 0 0 20px rgba(12, 192, 223, 0.1);
+  }
+
+  .neural-input {
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(12, 192, 223, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .neural-input:focus {
+    border-color: rgba(12, 192, 223, 0.8);
+    box-shadow: 
+      0 0 0 2px rgba(12, 192, 223, 0.2),
+      0 0 30px rgba(12, 192, 223, 0.3),
+      inset 0 0 15px rgba(12, 192, 223, 0.1);
+    background: rgba(15, 23, 42, 0.7);
+  }
+
+  .neural-input:hover {
+    border-color: rgba(12, 192, 223, 0.5);
+    box-shadow: 0 0 15px rgba(12, 192, 223, 0.2);
+  }
+
+  .neural-input::placeholder {
+    color: rgba(148, 163, 184, 0.7);
+    text-shadow: 0 0 10px rgba(12, 192, 223, 0.2);
+  }
+
+  .neural-button:hover {
+    box-shadow: 
+      0 0 30px rgba(12, 192, 223, 0.6),
+      0 0 60px rgba(12, 192, 223, 0.3),
+      inset 0 0 20px rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px) scale(1.05);
+  }
+
   .neural-pulse {
     animation: pulse-glow 2s ease-in-out infinite;
   }

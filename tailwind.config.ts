@@ -76,6 +76,13 @@ export default {
 			},
 			boxShadow: {
 				'neural': 'var(--shadow-neural)',
+				'neural-soft': '0 0 15px hsl(190 100% 44% / 0.2)',
+				'neural-intense': '0 0 40px hsl(190 100% 44% / 0.6), 0 0 80px hsl(190 100% 44% / 0.3)',
+				'neural-deep': '0 8px 32px rgba(0, 0, 0, 0.8), 0 0 30px hsl(190 100% 44% / 0.2)',
+				'neural-border': '0 0 20px hsl(190 100% 44% / 0.4), inset 0 0 20px hsl(190 100% 44% / 0.1)',
+				'neural-glow': '0 0 25px hsl(190 100% 44% / 0.4), inset 0 0 15px hsl(190 100% 44% / 0.2)',
+				'neural-core': '0 0 60px hsl(190 100% 44% / 0.5), 0 0 120px hsl(190 100% 44% / 0.3)',
+				'energy-line': '0 0 10px hsl(190 100% 44% / 0.8)',
 				'pulse': 'var(--shadow-pulse)',
 				'metallic': 'var(--shadow-metallic)',
 			},
@@ -103,17 +110,49 @@ export default {
 				},
 				'pulse-glow': {
 					'0%, 100%': {
-						boxShadow: '0 0 20px hsl(190 100% 44% / 0.3)'
+						opacity: '0.5',
+						transform: 'scale(1)'
 					},
 					'50%': {
-						boxShadow: '0 0 30px hsl(190 100% 44% / 0.6)'
+						opacity: '1',
+						transform: 'scale(1.05)'
+					}
+				},
+				'pulse-glow-slow': {
+					'0%, 100%': {
+						opacity: '0.3',
+						transform: 'scale(1)'
+					},
+					'50%': {
+						opacity: '0.8',
+						transform: 'scale(1.1)'
+					}
+				},
+				'neural-float': {
+					'0%, 100%': {
+						transform: 'translate(0, 0) scale(1)',
+						opacity: '0.2'
+					},
+					'25%': {
+						transform: 'translate(10px, -10px) scale(1.1)',
+						opacity: '0.6'
+					},
+					'50%': {
+						transform: 'translate(-5px, -20px) scale(0.9)',
+						opacity: '0.8'
+					},
+					'75%': {
+						transform: 'translate(-15px, -5px) scale(1.05)',
+						opacity: '0.4'
 					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'pulse-glow': 'pulse-glow 2s ease-in-out infinite'
+				'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
+				'pulse-glow-slow': 'pulse-glow-slow 5s ease-in-out infinite',
+				'neural-float': 'neural-float 12s ease-in-out infinite'
 			}
 		}
 	},

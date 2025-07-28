@@ -18,7 +18,7 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        neural: "bg-gradient-energy text-foreground font-semibold border border-neural shadow-pulse hover:shadow-neural transition-all duration-300 animate-pulse-glow",
+        neural: "bg-gradient-to-r from-neural to-energy text-background hover:shadow-neural-intense hover:scale-[1.05] hover:from-energy hover:to-neural border-2 border-energy/60 hover:border-energy font-semibold tracking-wide transition-all duration-300 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700",
       },
       size: {
         default: "h-10 px-4 py-2",
