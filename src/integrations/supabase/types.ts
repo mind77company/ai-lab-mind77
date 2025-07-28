@@ -14,6 +14,72 @@ export type Database = {
   }
   public: {
     Tables: {
+      colaboradores: {
+        Row: {
+          avatar: string | null
+          badges: Json | null
+          codename: string
+          created_at: string | null
+          efficiency: number | null
+          evolution_details: Json | null
+          id: string
+          is_weekly_growth_leader: boolean | null
+          level: number | null
+          max_xp: number | null
+          max_xp_current_level: number | null
+          name: string
+          projects: number | null
+          status: string | null
+          team: string | null
+          updated_at: string | null
+          weekly_growth: string | null
+          xp: number | null
+          xp_to_next_level: number | null
+        }
+        Insert: {
+          avatar?: string | null
+          badges?: Json | null
+          codename: string
+          created_at?: string | null
+          efficiency?: number | null
+          evolution_details?: Json | null
+          id?: string
+          is_weekly_growth_leader?: boolean | null
+          level?: number | null
+          max_xp?: number | null
+          max_xp_current_level?: number | null
+          name: string
+          projects?: number | null
+          status?: string | null
+          team?: string | null
+          updated_at?: string | null
+          weekly_growth?: string | null
+          xp?: number | null
+          xp_to_next_level?: number | null
+        }
+        Update: {
+          avatar?: string | null
+          badges?: Json | null
+          codename?: string
+          created_at?: string | null
+          efficiency?: number | null
+          evolution_details?: Json | null
+          id?: string
+          is_weekly_growth_leader?: boolean | null
+          level?: number | null
+          max_xp?: number | null
+          max_xp_current_level?: number | null
+          name?: string
+          projects?: number | null
+          status?: string | null
+          team?: string | null
+          updated_at?: string | null
+          weekly_growth?: string | null
+          xp?: number | null
+          xp_to_next_level?: number | null
+        }
+        Relationships: []
+      }
       gamificação: {
         Row: {
           descricao: string | null

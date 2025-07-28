@@ -5,19 +5,21 @@ interface Collaborator {
   id: string;
   name: string;
   codename: string;
-  avatar: string;
+  avatar: string | null;
   xp: number;
   level: number;
-  team: string;
-  maxXp: number;
+  team: string | null;
+  max_xp: number;
   status: "online" | "away" | "offline";
-  weeklyGrowth: string;
+  weekly_growth: string;
   efficiency: number;
   projects: number;
   badges: Array<{
     type: "mvp" | "cultura" | "tecnico" | "crescimento";
     label: string;
   }>;
+  evolution_details?: string[];
+  is_weekly_growth_leader?: boolean;
 }
 
 interface OlympicPlatformProps {
@@ -54,7 +56,7 @@ export const OlympicPlatform = ({ collaborator, rank, height, delay }: OlympicPl
     }
   };
 
-  const xpProgress = (collaborator.xp / collaborator.maxXp) * 100;
+  const xpProgress = (collaborator.xp / collaborator.max_xp) * 100;
 
   return (
     <div 
@@ -113,7 +115,7 @@ export const OlympicPlatform = ({ collaborator, rank, height, delay }: OlympicPl
           <div className="mb-4">
             <div className="flex justify-between text-xs text-cyan mb-1">
               <span>{collaborator.xp.toLocaleString()} XP</span>
-              <span>{collaborator.maxXp.toLocaleString()} XP</span>
+              <span>{collaborator.max_xp.toLocaleString()} XP</span>
             </div>
             <div className="w-full bg-gray-700 rounded-full h-2">
               <div 
@@ -127,7 +129,7 @@ export const OlympicPlatform = ({ collaborator, rank, height, delay }: OlympicPl
           <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 text-xs text-gray-300 space-y-1">
             <div className="flex justify-between">
               <span>Crescimento:</span>
-              <span className="text-green-400">{collaborator.weeklyGrowth}</span>
+              <span className="text-green-400">{collaborator.weekly_growth}</span>
             </div>
             <div className="flex justify-between">
               <span>Eficiência:</span>

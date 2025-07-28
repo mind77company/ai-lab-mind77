@@ -4,19 +4,21 @@ interface Collaborator {
   id: string;
   name: string;
   codename: string;
-  avatar: string;
+  avatar: string | null;
   xp: number;
   level: number;
-  team: string;
-  maxXp: number;
+  team: string | null;
+  max_xp: number;
   status: "online" | "away" | "offline";
-  weeklyGrowth: string;
+  weekly_growth: string;
   efficiency: number;
   projects: number;
   badges: Array<{
     type: "mvp" | "cultura" | "tecnico" | "crescimento";
     label: string;
   }>;
+  evolution_details?: string[];
+  is_weekly_growth_leader?: boolean;
 }
 
 interface CircularTableProps {
