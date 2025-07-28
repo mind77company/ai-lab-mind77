@@ -209,19 +209,62 @@ All colors MUST be HSL for proper theming.
     }
   }
 
-  /* Olympic Technological Table - Immersive 3D Environment */
+  /* Main 3D Container */
+  .circular-table-container {
+    perspective: 2000px;
+    perspective-origin: center center;
+    transform-style: preserve-3d;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Circular Table Styles with Real 3D Depth */
   .circular-table-base {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) perspective(1500px) rotateX(20deg);
+    transform: translate(-50%, -50%) rotateX(75deg) translateZ(-100px);
+    transform-style: preserve-3d;
     width: 800px;
     height: 800px;
-    background: 
-      radial-gradient(ellipse 60% 40% at center 30%, hsl(var(--primary) / 0.3), transparent),
-      radial-gradient(ellipse 80% 60% at center, hsl(var(--primary) / 0.15), transparent 70%);
     border-radius: 50%;
-    transform-style: preserve-3d;
+    background: 
+      radial-gradient(ellipse at center top, hsla(var(--primary), 0.8) 0%, transparent 70%),
+      radial-gradient(circle at center, hsla(var(--primary), 0.1) 0%, hsla(var(--primary), 0.05) 40%, transparent 70%);
+    border: 3px solid hsla(var(--primary), 0.6);
+    box-shadow: 
+      0 0 150px hsla(var(--primary), 0.4),
+      0 50px 100px hsla(var(--primary), 0.2),
+      inset 0 0 200px hsla(var(--primary), 0.1),
+      inset 0 -50px 100px hsla(var(--primary), 0.1);
+  }
+
+  /* Table Surface Layers for Depth */
+  .circular-table-base::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    bottom: 10%;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, hsla(var(--primary), 0.3) 0%, transparent 60%);
+    transform: translateZ(20px);
+    border: 1px solid hsla(var(--primary), 0.4);
+  }
+
+  .circular-table-base::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    right: 20%;
+    bottom: 20%;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, hsla(var(--primary), 0.2) 0%, transparent 50%);
+    transform: translateZ(40px);
+    border: 1px solid hsla(var(--primary), 0.3);
   }
 
   .circular-table-surface {
@@ -229,39 +272,32 @@ All colors MUST be HSL for proper theming.
     width: 100%;
     height: 100%;
     border-radius: 50%;
+    transform-style: preserve-3d;
     background: 
-      linear-gradient(135deg, 
-        hsl(var(--background) / 0.1), 
-        hsl(var(--primary) / 0.05),
-        hsl(var(--background) / 0.1)
-      );
-    border: 3px solid hsl(var(--primary) / 0.4);
-    box-shadow: 
-      inset 0 0 100px hsl(var(--primary) / 0.3),
-      inset 0 0 200px hsl(var(--primary) / 0.1),
-      0 20px 60px hsl(var(--primary) / 0.2),
-      0 0 150px hsl(var(--primary) / 0.15);
-    transform: translateZ(20px);
+      radial-gradient(ellipse 80% 60% at center 30%, hsla(var(--primary), 0.3) 0%, transparent 70%),
+      radial-gradient(circle at center, hsla(var(--primary), 0.1) 0%, hsla(var(--background), 0.05) 80%);
+    overflow: hidden;
   }
 
   .table-center-orb {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 200px;
-    height: 200px;
-    background: 
-      radial-gradient(circle at 30% 30%, hsl(var(--primary)), hsl(var(--primary) / 0.7)),
-      radial-gradient(circle at 70% 70%, hsl(var(--secondary) / 0.8), transparent);
+    transform: translate(-50%, -50%) translateZ(60px);
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
-    border: 2px solid hsl(var(--primary));
+    background: 
+      radial-gradient(ellipse at 30% 20%, hsla(var(--primary), 1) 0%, hsla(var(--primary), 0.6) 30%, transparent 70%),
+      radial-gradient(circle at 70% 80%, hsla(var(--primary), 0.8) 0%, hsla(var(--primary), 0.4) 50%, transparent 80%),
+      radial-gradient(circle at center, hsla(var(--primary), 0.6) 0%, hsla(var(--primary), 0.3) 100%);
+    border: 3px solid hsla(var(--primary), 0.9);
     box-shadow: 
-      0 0 60px hsl(var(--primary)),
-      inset 0 0 40px hsl(var(--primary) / 0.3),
-      inset 0 0 80px hsl(var(--background) / 0.1);
-    animation: hologram-pulse 4s ease-in-out infinite;
-    transform: translateZ(30px);
+      0 0 100px hsla(var(--primary), 0.8),
+      0 0 200px hsla(var(--primary), 0.4),
+      inset 0 0 50px hsla(var(--primary), 0.6),
+      inset 0 0 100px hsla(var(--primary), 0.2);
+    animation: core-energy 6s ease-in-out infinite;
   }
 
   .neural-circuits {
@@ -339,13 +375,15 @@ All colors MUST be HSL for proper theming.
     transform: translateZ(25px);
   }
 
+  /* Neural Connections with 3D Effect */
   .neural-connections {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
     width: 100%;
     height: 100%;
+    pointer-events: none;
+    z-index: 2;
     transform-style: preserve-3d;
   }
 
@@ -353,31 +391,40 @@ All colors MUST be HSL for proper theming.
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 400px;
+    width: 420px;
     height: 3px;
-    background: linear-gradient(
-      90deg,
-      hsl(var(--primary)),
-      hsl(var(--primary) / 0.6) 30%,
-      hsl(var(--primary) / 0.2) 70%,
-      transparent
-    );
-    transform-origin: left center;
-    animation: neural-data-flow 4s ease-in-out infinite;
-    box-shadow: 0 0 10px hsl(var(--primary) / 0.5);
+    background: 
+      linear-gradient(to right, transparent 0%, hsla(var(--primary), 0.8) 20%, hsla(var(--primary), 1) 50%, hsla(var(--primary), 0.8) 80%, transparent 100%);
+    transform-origin: 0 50%;
+    border-radius: 2px;
+    box-shadow: 
+      0 0 15px hsla(var(--primary), 0.6),
+      0 0 30px hsla(var(--primary), 0.4);
+    animation: neural-data-flow-3d 4s ease-in-out infinite;
   }
 
-  /* Olympus Avatar Hierarchy */
+  .neural-beam::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, transparent 0%, hsla(var(--primary), 0.3) 50%, transparent 100%);
+    border-radius: 3px;
+    filter: blur(2px);
+  }
+
+  /* Circular Avatar Styles with 3D Positioning */
   .circular-avatar-container {
     position: absolute;
-    width: 220px;
-    height: 280px;
     transform-style: preserve-3d;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .circular-avatar-container:hover {
-    transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1.08) translateZ(20px);
+    transform: translateZ(80px) scale(1.08) rotateY(-5deg);
+    filter: brightness(1.2);
   }
 
   /* Rank #1 - Supreme Position */
@@ -424,24 +471,31 @@ All colors MUST be HSL for proper theming.
 
   .holo-panel {
     position: relative;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      145deg,
-      hsl(var(--background) / 0.95),
-      hsl(var(--background) / 0.85),
-      hsl(var(--background) / 0.9)
-    );
-    border: 1px solid hsl(var(--primary) / 0.4);
-    border-radius: 16px;
     padding: 20px;
-    backdrop-filter: blur(15px) saturate(150%);
+    background: 
+      linear-gradient(135deg, hsla(var(--background), 0.95) 0%, hsla(var(--primary), 0.15) 50%, hsla(var(--background), 0.9) 100%),
+      linear-gradient(45deg, transparent 0%, hsla(var(--primary), 0.05) 50%, transparent 100%);
+    border: 2px solid hsla(var(--primary), 0.4);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
     box-shadow: 
-      0 12px 40px hsl(var(--primary) / 0.2),
-      inset 0 1px 0 hsl(var(--primary) / 0.1),
-      inset 0 -1px 0 hsl(var(--background) / 0.1);
-    transform: perspective(1200px) rotateX(5deg) translateZ(15px);
-    overflow: hidden;
+      0 15px 50px hsla(var(--primary), 0.3),
+      0 5px 20px hsla(var(--primary), 0.1),
+      inset 0 2px 0 hsla(var(--primary), 0.2),
+      inset 0 -2px 0 hsla(var(--primary), 0.1);
+    min-width: 220px;
+    text-align: center;
+    transform: rotateY(10deg) rotateX(5deg);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .holo-panel:hover {
+    transform: rotateY(0deg) rotateX(0deg) translateZ(20px);
+    box-shadow: 
+      0 25px 80px hsla(var(--primary), 0.4),
+      0 10px 40px hsla(var(--primary), 0.2),
+      inset 0 2px 0 hsla(var(--primary), 0.3),
+      inset 0 -2px 0 hsla(var(--primary), 0.2);
   }
 
   .holo-panel::before {
@@ -489,15 +543,42 @@ All colors MUST be HSL for proper theming.
 
   .avatar-glow {
     position: relative;
-    padding: 6px;
+  }
+
+  .avatar-glow::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
     border-radius: 50%;
-    background: conic-gradient(
-      from 0deg,
-      hsl(var(--primary)),
-      hsl(var(--secondary)),
-      hsl(var(--primary))
+    background: linear-gradient(45deg, 
+      hsla(var(--primary), 0.8),
+      hsla(var(--primary), 0.6),
+      hsla(var(--primary), 0.8),
+      hsla(var(--primary), 0.4)
     );
-    animation: avatar-energy-flow 4s linear infinite;
+    background-size: 200% 200%;
+    animation: energy-border-flow 4s ease-in-out infinite;
+    z-index: -1;
+  }
+
+  .avatar-glow::after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, 
+      transparent,
+      hsla(var(--primary), 0.3),
+      transparent
+    );
+    animation: energy-sweep 3s ease-in-out infinite;
+    z-index: -1;
   }
 
   .avatar-glow.top-three-glow {
@@ -597,22 +678,41 @@ All colors MUST be HSL for proper theming.
     animation: connection-pulse 3s ease-in-out infinite;
   }
 
-  /* Digital Mist and Particles */
+  /* 3D Energy Particles System */
   .energy-particles {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
-    overflow: hidden;
+    z-index: 1;
+    transform-style: preserve-3d;
   }
 
   .energy-particle {
     position: absolute;
-    width: 3px;
-    height: 3px;
-    background: hsl(var(--primary));
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, hsla(var(--primary), 0.9) 0%, hsla(var(--primary), 0.6) 50%, transparent 100%);
     border-radius: 50%;
-    box-shadow: 0 0 6px hsl(var(--primary));
-    animation: olympus-particle-drift 8s linear infinite;
+    box-shadow: 
+      0 0 10px hsla(var(--primary), 0.8),
+      0 0 20px hsla(var(--primary), 0.4);
+    animation: particle-3d-drift 12s ease-in-out infinite;
+    opacity: 0.8;
+  }
+
+  .energy-particle:nth-child(3n) {
+    background: radial-gradient(circle, hsla(var(--primary), 0.9) 0%, hsla(var(--primary), 0.6) 50%, transparent 100%);
+    animation-duration: 8s;
+  }
+
+  .energy-particle:nth-child(5n) {
+    width: 4px;
+    height: 4px;
+    animation-duration: 15s;
+    opacity: 0.6;
   }
 
   /* Advanced Olympus Animations */
@@ -670,9 +770,21 @@ All colors MUST be HSL for proper theming.
     100% { left: 100%; }
   }
 
-  @keyframes avatar-energy-flow {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  @keyframes energy-border-flow {
+    0%, 100% { 
+      background-position: 0% 50%;
+      filter: hue-rotate(0deg);
+    }
+    50% { 
+      background-position: 100% 50%;
+      filter: hue-rotate(30deg);
+    }
+  }
+
+  @keyframes energy-sweep {
+    0% { transform: rotate(0deg); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: rotate(360deg); opacity: 0; }
   }
 
   @keyframes olympus-pulse-ring {
@@ -706,21 +818,33 @@ All colors MUST be HSL for proper theming.
     }
   }
 
-  @keyframes olympus-particle-drift {
-    0% { 
-      transform: translateY(100vh) translateX(0px) scale(0);
-      opacity: 0;
+  @keyframes particle-3d-drift {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px) translateZ(0px);
+      opacity: 0.3;
     }
-    10% { 
+    25% {
+      transform: translateY(-30px) translateX(20px) translateZ(50px);
+      opacity: 0.8;
+    }
+    50% {
+      transform: translateY(-15px) translateX(-25px) translateZ(100px);
       opacity: 1;
-      transform: scale(1);
     }
-    90% { 
+    75% {
+      transform: translateY(-45px) translateX(15px) translateZ(25px);
+      opacity: 0.6;
+    }
+  }
+
+  @keyframes neural-data-flow-3d {
+    0%, 100% {
+      opacity: 0.4;
+      transform: translateZ(0px);
+    }
+    50% {
       opacity: 1;
-    }
-    100% { 
-      transform: translateY(-100px) translateX(50px) scale(0);
-      opacity: 0;
+      transform: translateZ(20px);
     }
   }
 }

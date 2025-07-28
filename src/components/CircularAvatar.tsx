@@ -13,6 +13,8 @@ interface Position {
   y: number;
   angle: number;
   zOffset?: number;
+  scale?: number;
+  rotationY?: number;
 }
 
 interface CircularAvatarProps {
@@ -43,7 +45,7 @@ export const CircularAvatar = ({ collaborator, rank, mainSkill, position }: Circ
     <div
       className={`circular-avatar-container ${getRankStyle()}`}
       style={{
-        transform: `translate(calc(-50% + ${position.x}px), calc(-50% + ${position.y}px)) translateZ(${position.zOffset || 0}px)`,
+        transform: `translate(calc(-50% + ${position.x}px), calc(-50% + ${position.y}px)) translateZ(${position.zOffset || 0}px) scale(${position.scale || 1}) rotateY(${position.rotationY || 0}deg)`,
         position: 'absolute',
         top: '50%',
         left: '50%',
