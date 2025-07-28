@@ -52,6 +52,11 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// Mind77 futuristic color system
+				neural: 'hsl(var(--neural-glow))',
+				metallic: 'hsl(var(--metallic-base))',
+				tech: 'hsl(var(--tech-surface))',
+				energy: 'hsl(var(--energy-pulse))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -62,6 +67,16 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				}
+			},
+			backgroundImage: {
+				'gradient-neural': 'var(--gradient-neural)',
+				'gradient-metallic': 'var(--gradient-metallic)',
+				'gradient-energy': 'var(--gradient-energy)',
+			},
+			boxShadow: {
+				'neural': 'var(--shadow-neural)',
+				'pulse': 'var(--shadow-pulse)',
+				'metallic': 'var(--shadow-metallic)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -82,13 +97,22 @@ export default {
 						height: 'var(--radix-accordion-content-height)'
 					},
 					to: {
-						height: '0'
+						height: 'var(--radix-accordion-content-height)'
+					}
+				},
+				'pulse-glow': {
+					'0%, 100%': {
+						boxShadow: '0 0 20px hsl(190 100% 44% / 0.3)'
+					},
+					'50%': {
+						boxShadow: '0 0 30px hsl(190 100% 44% / 0.6)'
 					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'pulse-glow': 'pulse-glow 2s ease-in-out infinite'
 			}
 		}
 	},

@@ -2,41 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Mind77 Futuristic Design System - Ultra-realistic sci-fi tech interface
+All colors MUST be HSL for proper theming.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core sci-fi color palette */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Cyan accent system */
+    --primary: 190 100% 44%;
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Metallic gray system */
+    --secondary: 85 7% 75%;
+    --secondary-foreground: 0 0% 0%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 85 7% 75%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 190 100% 44%;
+    --accent-foreground: 0 0% 0%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 0 0% 20%;
+    --input: 0 0% 12%;
+    --ring: 190 100% 44%;
 
     --radius: 0.5rem;
+
+    /* Futuristic design tokens */
+    --neural-glow: 190 100% 44%;
+    --metallic-base: 85 7% 75%;
+    --tech-surface: 0 0% 8%;
+    --energy-pulse: 190 100% 50%;
+    
+    /* Advanced gradients */
+    --gradient-neural: linear-gradient(135deg, hsl(190 100% 15%), hsl(0 0% 5%));
+    --gradient-metallic: linear-gradient(180deg, hsl(85 7% 25%), hsl(0 0% 10%));
+    --gradient-energy: linear-gradient(90deg, hsl(190 100% 44%), hsl(190 100% 60%));
+    
+    /* Glow effects */
+    --shadow-neural: 0 0 30px hsl(190 100% 44% / 0.3);
+    --shadow-pulse: 0 0 20px hsl(190 100% 44% / 0.5);
+    --shadow-metallic: 0 4px 20px hsl(0 0% 0% / 0.5);
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +120,14 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+  
+  /* Custom glow effects for neural interface */
+  .glow-focus:focus {
+    box-shadow: 0 0 20px hsl(190 100% 44% / 0.4);
+  }
+  
+  .neural-pulse {
+    animation: pulse-glow 2s ease-in-out infinite;
   }
 }
