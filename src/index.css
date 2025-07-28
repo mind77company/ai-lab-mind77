@@ -209,35 +209,137 @@ All colors MUST be HSL for proper theming.
     }
   }
 
-  /* Main 3D Container */
-  .circular-table-container {
+  /* Olympic Platform Styles */
+  .olympus-arena {
     perspective: 2000px;
-    perspective-origin: center center;
     transform-style: preserve-3d;
     position: relative;
-    width: 100%;
-    height: 100%;
+    overflow: hidden;
   }
 
-  /* Circular Table Styles with Real 3D Depth */
-  .circular-table-base {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotateX(75deg) translateZ(-100px);
+  .olympic-platform {
+    position: relative;
     transform-style: preserve-3d;
-    width: 800px;
-    height: 800px;
-    border-radius: 50%;
-    background: 
-      radial-gradient(ellipse at center top, hsla(var(--primary), 0.8) 0%, transparent 70%),
-      radial-gradient(circle at center, hsla(var(--primary), 0.1) 0%, hsla(var(--primary), 0.05) 40%, transparent 70%);
-    border: 3px solid hsla(var(--primary), 0.6);
+    animation-fill-mode: both;
+    opacity: 0;
+  }
+
+  .platform-glow {
     box-shadow: 
-      0 0 150px hsla(var(--primary), 0.4),
-      0 50px 100px hsla(var(--primary), 0.2),
-      inset 0 0 200px hsla(var(--primary), 0.1),
-      inset 0 -50px 100px hsla(var(--primary), 0.1);
+      0 0 30px rgba(0, 255, 255, 0.4),
+      0 0 60px rgba(0, 255, 255, 0.2);
+    animation: platform-pulse 3s ease-in-out infinite;
+  }
+
+  .platform-surface {
+    background: 
+      linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 20, 40, 0.6) 100%);
+    backdrop-filter: blur(20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+  }
+
+  .platform-surface:hover {
+    backdrop-filter: blur(30px);
+    box-shadow: 
+      0 20px 60px rgba(0, 0, 0, 0.5),
+      0 0 40px currentColor;
+  }
+
+  .champion-avatar {
+    position: relative;
+    z-index: 10;
+  }
+
+  .energy-rings {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .neural-connections {
+    background: linear-gradient(
+      to top,
+      rgba(0, 255, 255, 0.6) 0%,
+      rgba(0, 255, 255, 0.3) 50%,
+      transparent 100%
+    );
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    animation: neural-beam-pulse 2s ease-in-out infinite;
+  }
+
+  .tech-badge {
+    background: rgba(0, 0, 0, 0.6);
+    border-color: rgba(0, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+
+  .tech-badge:hover {
+    border-color: rgba(0, 255, 255, 0.8);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
+  }
+
+  .scan-lines {
+    animation: scan-sweep 3s linear infinite;
+  }
+
+  /* Energy Streams */
+  .energy-streams {
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Core Animations */
+  @keyframes platform-pulse {
+    0%, 100% { 
+      box-shadow: 
+        0 0 30px rgba(0, 255, 255, 0.4),
+        0 0 60px rgba(0, 255, 255, 0.2);
+    }
+    50% { 
+      box-shadow: 
+        0 0 40px rgba(0, 255, 255, 0.6),
+        0 0 80px rgba(0, 255, 255, 0.3);
+    }
+  }
+
+  @keyframes neural-beam-pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes scan-sweep {
+    0% { transform: translateY(100%); }
+    100% { transform: translateY(-100%); }
+  }
+
+  /* Background Gradients */
+  .bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+
+  /* Utility Classes */
+  .animate-spin-slow {
+    animation: spin-slow 8s linear infinite;
+  }
+
+  .animate-spin-reverse {
+    animation: spin-reverse 6s linear infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes spin-reverse {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
   }
 
   /* Table Surface Layers for Depth */
