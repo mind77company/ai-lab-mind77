@@ -69,6 +69,7 @@ export default {
 				}
 			},
 			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'gradient-neural': 'var(--gradient-neural)',
 				'gradient-metallic': 'var(--gradient-metallic)',
 				'gradient-energy': 'var(--gradient-energy)',
