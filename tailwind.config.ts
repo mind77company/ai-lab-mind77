@@ -78,11 +78,16 @@ export default {
 				'neural': 'var(--shadow-neural)',
 				'pulse': 'var(--shadow-pulse)',
 				'metallic': 'var(--shadow-metallic)',
+				'glow': '0 0 20px hsl(190 100% 44% / 0.4)',
+				'glow-lg': '0 0 30px hsl(190 100% 44% / 0.6)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			backdropBlur: {
+				xs: '2px',
 			},
 			keyframes: {
 				'accordion-down': {
@@ -103,17 +108,30 @@ export default {
 				},
 				'pulse-glow': {
 					'0%, 100%': {
-						boxShadow: '0 0 20px hsl(190 100% 44% / 0.3)'
+						boxShadow: '0 0 20px hsl(190 100% 44% / 0.3)',
+						opacity: '0.8'
 					},
 					'50%': {
-						boxShadow: '0 0 30px hsl(190 100% 44% / 0.6)'
+						boxShadow: '0 0 35px hsl(190 100% 44% / 0.6)',
+						opacity: '1'
+					}
+				},
+				'neural-pulse': {
+					'0%, 100%': {
+						opacity: '0.6',
+						transform: 'scale(1)'
+					},
+					'50%': {
+						opacity: '1',
+						transform: 'scale(1.02)'
 					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'pulse-glow': 'pulse-glow 2s ease-in-out infinite'
+				'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
+				'neural-pulse': 'neural-pulse 2s ease-in-out infinite'
 			}
 		}
 	},
