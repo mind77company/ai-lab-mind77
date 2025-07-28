@@ -1,4 +1,4 @@
-import { CollaboratorCard } from "./CollaboratorCard";
+import { CircularTable } from "./CircularTable";
 import { mockCollaborators } from "@/data/mockData";
 
 interface RankingGridProps {
@@ -13,17 +13,8 @@ export const RankingGrid = ({ period, team }: RankingGridProps) => {
     .sort((a, b) => b.xp - a.xp);
 
   return (
-    <div className="max-w-7xl mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {filteredCollaborators.map((collaborator, index) => (
-          <CollaboratorCard
-            key={collaborator.id}
-            collaborator={collaborator}
-            rank={index + 1}
-            isTopThree={index < 3}
-          />
-        ))}
-      </div>
+    <div className="w-full h-full">
+      <CircularTable collaborators={filteredCollaborators} />
     </div>
   );
 };

@@ -208,4 +208,406 @@ All colors MUST be HSL for proper theming.
       transform: scale(1.05);
     }
   }
+
+  /* Circular Table Styles */
+  .circular-table-base {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+    transform-style: preserve-3d;
+    animation: table-rotate 60s linear infinite;
+  }
+
+  .circular-table-surface {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: 
+      conic-gradient(from 0deg, 
+        rgba(0, 255, 255, 0.2) 0deg,
+        transparent 45deg,
+        rgba(0, 255, 255, 0.1) 90deg,
+        transparent 135deg,
+        rgba(0, 255, 255, 0.2) 180deg,
+        transparent 225deg,
+        rgba(0, 255, 255, 0.1) 270deg,
+        transparent 315deg
+      );
+    border: 2px solid rgba(0, 255, 255, 0.3);
+    position: relative;
+    box-shadow: 
+      0 0 50px rgba(0, 255, 255, 0.3),
+      inset 0 0 30px rgba(0, 255, 255, 0.1);
+  }
+
+  .table-center-orb {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.8) 0%, rgba(0, 255, 255, 0.2) 100%);
+    box-shadow: 
+      0 0 30px rgba(0, 255, 255, 0.8),
+      inset 0 0 20px rgba(255, 255, 255, 0.3);
+    animation: orb-pulse 2s ease-in-out infinite;
+  }
+
+  .neural-circuits {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    transform: translate(-50%, -50%);
+    background: 
+      linear-gradient(45deg, transparent 30%, rgba(0, 255, 255, 0.6) 50%, transparent 70%),
+      linear-gradient(-45deg, transparent 30%, rgba(0, 255, 255, 0.6) 50%, transparent 70%);
+    animation: circuit-pulse 1.5s ease-in-out infinite alternate;
+  }
+
+  .energy-core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 1);
+    animation: core-flicker 0.5s ease-in-out infinite alternate;
+  }
+
+  .table-grid-pattern {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: 
+      repeating-conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        rgba(0, 255, 255, 0.1) 2deg,
+        transparent 4deg
+      );
+    animation: grid-spin 120s linear infinite;
+  }
+
+  .energy-ring-outer, .energy-ring-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 255, 255, 0.4);
+    background: transparent;
+  }
+
+  .energy-ring-outer {
+    width: 350px;
+    height: 350px;
+    transform: translate(-50%, -50%);
+    animation: ring-rotate 30s linear infinite;
+  }
+
+  .energy-ring-inner {
+    width: 250px;
+    height: 250px;
+    transform: translate(-50%, -50%);
+    animation: ring-rotate 20s linear infinite reverse;
+  }
+
+  .neural-connections {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    transform: translate(-50%, -50%);
+  }
+
+  .neural-beam {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 280px;
+    background: linear-gradient(to top, transparent, rgba(0, 255, 255, 0.6), transparent);
+    transform-origin: bottom center;
+    animation: beam-pulse 3s ease-in-out infinite;
+  }
+
+  /* Circular Avatar Styles */
+  .circular-avatar-container {
+    z-index: 10;
+    transition: all 0.3s ease;
+  }
+
+  .circular-avatar-container:hover {
+    transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1.1) !important;
+    z-index: 20;
+  }
+
+  .holo-panel {
+    background: 
+      linear-gradient(145deg, rgba(0, 255, 255, 0.1), rgba(0, 0, 0, 0.8)),
+      linear-gradient(45deg, transparent 30%, rgba(0, 255, 255, 0.05) 50%, transparent 70%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 12px;
+    padding: 16px;
+    width: 140px;
+    text-align: center;
+    position: relative;
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.5),
+      0 0 20px rgba(0, 255, 255, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .holo-panel:hover {
+    border-color: rgba(0, 255, 255, 0.6);
+    box-shadow: 
+      0 12px 40px rgba(0, 0, 0, 0.6),
+      0 0 30px rgba(0, 255, 255, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  .rank-indicator {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid currentColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 0 15px currentColor;
+  }
+
+  .avatar-container {
+    position: relative;
+    margin: 8px auto 12px;
+    width: fit-content;
+  }
+
+  .avatar-glow {
+    padding: 4px;
+    border-radius: 50%;
+    background: 
+      conic-gradient(from 0deg, 
+        rgba(0, 255, 255, 0.6),
+        transparent,
+        rgba(0, 255, 255, 0.6)
+      );
+    animation: avatar-glow-rotate 4s linear infinite;
+  }
+
+  .top-three-glow {
+    background: 
+      conic-gradient(from 0deg, 
+        rgba(255, 215, 0, 0.8),
+        rgba(0, 255, 255, 0.6),
+        rgba(255, 215, 0, 0.8)
+      );
+  }
+
+  .neural-avatar {
+    background: rgba(0, 0, 0, 0.8) !important;
+  }
+
+  .energy-pulse-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    transform: translate(-50%, -50%);
+    border: 2px solid rgba(0, 255, 255, 0.3);
+    border-radius: 50%;
+    animation: pulse-ring 2s ease-in-out infinite;
+  }
+
+  .collaborator-name {
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  }
+
+  .main-skill {
+    color: rgba(0, 255, 255, 0.8);
+    font-size: 11px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .level-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+
+  .level-label {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 10px;
+    font-weight: 500;
+  }
+
+  .level-number {
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 0 0 10px currentColor;
+  }
+
+  .status-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .status-dot.active {
+    background: rgba(0, 255, 255, 0.8);
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
+  }
+
+  .connection-node {
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: rgba(0, 255, 255, 0.8);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+    animation: node-pulse 2s ease-in-out infinite;
+  }
+
+  .energy-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .energy-particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: rgba(0, 255, 255, 0.6);
+    animation: particle-float 6s ease-in-out infinite;
+  }
+
+  /* Rank-specific styles */
+  .rank-gold .holo-panel {
+    border-color: rgba(255, 215, 0, 0.5);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.5),
+      0 0 30px rgba(255, 215, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .rank-silver .holo-panel {
+    border-color: rgba(192, 192, 192, 0.5);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.5),
+      0 0 25px rgba(192, 192, 192, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .rank-bronze .holo-panel {
+    border-color: rgba(205, 127, 50, 0.5);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.5),
+      0 0 25px rgba(205, 127, 50, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  /* Animations */
+  @keyframes table-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes orb-pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+  }
+
+  @keyframes circuit-pulse {
+    0% { opacity: 0.6; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes core-flicker {
+    0% { opacity: 0.8; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes grid-spin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  @keyframes ring-rotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  @keyframes beam-pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+  }
+
+  @keyframes avatar-glow-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes pulse-ring {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.1; }
+    100% { transform: translate(-50%, -50%) scale(1.4); opacity: 0; }
+  }
+
+  @keyframes node-pulse {
+    0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+    50% { transform: translateX(-50%) scale(1.2); opacity: 1; }
+  }
+
+  @keyframes particle-float {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+  }
 }

@@ -18,13 +18,15 @@ const Dashboard = () => {
         <div className="flex-1 flex flex-col">
           <TopBar />
           
-          <div className="flex-1 p-6 md:p-8">
-            <FilterDropdowns 
-              selectedPeriod={selectedPeriod}
-              onPeriodChange={setSelectedPeriod}
-              selectedTeam={selectedTeam}
-              onTeamChange={setSelectedTeam}
-            />
+          <div className="flex-1 relative">
+            <div className="absolute top-4 left-4 z-20">
+              <FilterDropdowns 
+                selectedPeriod={selectedPeriod}
+                onPeriodChange={setSelectedPeriod}
+                selectedTeam={selectedTeam}
+                onTeamChange={setSelectedTeam}
+              />
+            </div>
             
             <RankingGrid period={selectedPeriod} team={selectedTeam} />
           </div>
