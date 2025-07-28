@@ -145,6 +145,14 @@ export default {
 						transform: 'translate(-15px, -5px) scale(1.05)',
 						opacity: '0.4'
 					}
+				},
+				'pulse-wave': {
+					'0%': {
+						transform: 'translateX(-100%)'
+					},
+					'100%': {
+						transform: 'translateX(100%)'
+					}
 				}
 			},
 			animation: {
@@ -152,7 +160,8 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
 				'pulse-glow-slow': 'pulse-glow-slow 5s ease-in-out infinite',
-				'neural-float': 'neural-float 12s ease-in-out infinite'
+				'neural-float': 'neural-float 12s ease-in-out infinite',
+				'pulse-wave': 'pulse-wave 2s ease-in-out infinite'
 			}
 		}
 	},

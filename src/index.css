@@ -131,9 +131,34 @@ All colors MUST be HSL for proper theming.
   }
 
   .neural-glow {
-    box-shadow: 
-      0 0 20px rgba(12, 192, 223, 0.2),
-      inset 0 0 20px rgba(12, 192, 223, 0.1);
+    text-shadow: 0 0 20px hsl(var(--cyan));
+    filter: drop-shadow(0 0 10px hsl(var(--cyan) / 0.5));
+  }
+
+  .neural-glow-gold {
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.6), inset 0 0 20px rgba(255, 215, 0, 0.1);
+    border-color: rgba(255, 215, 0, 0.8) !important;
+  }
+
+  .neural-glow-silver {
+    box-shadow: 0 0 30px rgba(192, 192, 192, 0.6), inset 0 0 20px rgba(192, 192, 192, 0.1);
+    border-color: rgba(192, 192, 192, 0.8) !important;
+  }
+
+  .neural-glow-bronze {
+    box-shadow: 0 0 30px rgba(205, 127, 50, 0.6), inset 0 0 20px rgba(205, 127, 50, 0.1);
+    border-color: rgba(205, 127, 50, 0.8) !important;
+  }
+
+  .neural-dropdown {
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(16px);
+    border: 1px solid hsl(var(--cyan) / 0.3);
+  }
+
+  .neural-progress .bg-primary {
+    background: linear-gradient(90deg, hsl(var(--cyan)), hsl(var(--cyan-bright)));
+    box-shadow: 0 0 10px hsl(var(--cyan) / 0.5);
   }
 
   .neural-input {
